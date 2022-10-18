@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+
+<h1 class="tc dib">Welcome to Covid Tracking DashBoard</h1>
+
+<p class="lh-copy f2">Site is powered by Svelte and SvelteKit. Click 
+    <a class="pa2 ma2 ba br4 no-underline f3" href="/home">Home</a> button to enjoy the data interactivity</p>
