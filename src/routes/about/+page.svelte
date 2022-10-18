@@ -4,4 +4,4 @@
 
 <h1 class="dib tc bg-light-blue">About this site</h1>
 
-<p class="f4 lh-copy">This site is trial of the svelteKit to build a full fledged interactive dashboard. The data is taken from https://api.covidtracking.com/v1/states/current.json and https://api.covidtracking.com/v1/us/current.json</p>
+<p class="f4 lh-copy">This site is trial of the svelteKit to build a full fledged interactive dashboard. The data is taken from <a href=" https://api.covidtracking.com/v1/states/current.json">each states current data</a> and <a href="https://api.covidtracking.com/v1/us/current.json">Entire US data</a> </p>
