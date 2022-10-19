@@ -4,7 +4,7 @@
 	import CovidStat from '../../lib/CovidStat.svelte'
 	import TableContainer from '../../lib/TableContainer.svelte'
 	export let data;
-	console.log(data)
+	//console.log(data)
 </script>
 
 <svelte:head>
