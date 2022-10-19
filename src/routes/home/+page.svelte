@@ -12,7 +12,7 @@
 </svelte:head>
 
 <div class="w-100 flex justify-center">
-	<h1 class="bg-green tc">Challenges are there to make you learn.</h1>
+	<h1 class="tc">United States : Covid Status</h1>
 </div>
 
 <CovidStat {...data.country}/>

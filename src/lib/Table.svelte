@@ -13,24 +13,24 @@
 
 <div class="section">
   <div class="container">
-    <table class="table is-bordered is-striped">
+    <table class="collapse ba br2 b--black-10 pv2 ph3 mt4">
       <thead>
-        <tr>
-          <th>State</th>
-          <th>Cases</th>
-          <th>Deaths</th>
-          <th>Total Tested</th>
+        <tr class="striped--near-white">
+          <th class="pv2 ph3">State</th>
+          <th class="pv2 ph3">Cases</th>
+          <th class="pv2 ph3">Deaths</th>
+          <th class="pv2 ph3">Total Tested</th>
         </tr>
       </thead>
       <tbody>
         {#each states as state (state.state)}
-          <tr>
-            <td>
-              <a rel="prefetch" href="/state/{state.state}">{state.fullStateName}</a>
+          <tr class="striped--near-white">
+            <td class="pv2 ph3">
+              <a rel="prefetch" href="/state/{state.state}" class="no-underline">{state.fullStateName}</a>
             </td>
-            <td>{state.cases}</td>
-            <td>{state.deaths}</td>
-            <td>{state.tested}</td>
+            <td class="pv2 ph3">{state.cases}</td>
+            <td class="pv2 ph3">{state.deaths}</td>
+            <td class="pv2 ph3">{state.tested}</td>
           </tr>
         {/each}
       </tbody>
