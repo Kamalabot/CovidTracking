@@ -1,3 +1,4 @@
+// @ts-nocheck
 import format from './format';
 import moment from 'moment';
 import stateNames from './stateNames';
@@ -76,7 +77,7 @@ function parseHistoric(historicData) {
 function parseChart(historicData, key, label, color) {
   const chartData = historicData.map((data) => {
     return {
-      x: moment(data.date, 'YYYYMMDD'),
+      x: moment(data.date)._i,
       y: data[key] || 0,
     };
   });
