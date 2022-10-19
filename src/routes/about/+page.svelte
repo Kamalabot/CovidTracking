@@ -18,4 +18,4 @@
 
 <SvgChart height={200} width={500} dataIn={data.parseData}/>
 
-<D3Chart height={200} width={500} dataIn={data.parseData}/>
+<D3Chart height={200} width={500} chartData={data.parseData}/>
