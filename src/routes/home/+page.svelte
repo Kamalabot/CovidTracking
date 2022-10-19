@@ -1,10 +1,10 @@
 <script>
 // @ts-nocheck
-	import CovidChart from '$lib/CovidChart.svelte'
-	import CovidStat from '$lib/CovidStat.svelte'
-	import TableContainer from '$lib/TableContainer.svelte'
+	import CovidChart from '../../lib/CovidChart.svelte'
+	import CovidStat from '../../lib/CovidStat.svelte'
+	import TableContainer from '../../lib/TableContainer.svelte'
 	export let data;
-	//console.log(data)
+	console.log(data)
 </script>
 
 <svelte:head>
@@ -15,8 +15,4 @@
 	<h1 class="bg-green tc">Challenges are there to make you learn.</h1>
 </div>
 
-<CovidStat/>
-
-<CovidChart/>
-
-<TableContainer/>
+<CovidStat {...data.country}/>
