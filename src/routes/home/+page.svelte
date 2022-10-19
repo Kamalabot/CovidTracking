@@ -16,3 +16,5 @@
 </div>
 
 <CovidStat {...data.country}/>
+
+<TableContainer data={data.state}/>
