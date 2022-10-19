@@ -1,3 +1,4 @@
+// @ts-nocheck
 import parsers from '../../lib/parsers'
 
 //@ts-nocheck

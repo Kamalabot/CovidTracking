@@ -102,6 +102,14 @@ function parseStats(rawStats) {
     updated: moment(rawStats.lastModified).format('LT'),
   };
 }
+function parsePart(rawStats){
+  return {
+    cases: format.number(rawStats.positive),
+    deaths: format.number(rawStats.death),
+    updated: moment(rawStats.lastModified).format('L')
+  }
+}
+
 
 export default {
   usStats,
@@ -109,4 +117,5 @@ export default {
   historicUS,
   historicState,
   stateTable,
+  parsePart
 };
