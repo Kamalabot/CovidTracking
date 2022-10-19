@@ -10,18 +10,17 @@
     // export let userId;
     let div;
     // console.log(userId)
-    const margin = {left:20,right:20,top:20,bottom:20}
+    const margin = {left:70,right:20,top:20,bottom:20}
     const visWidth = width - margin.left - margin.right
-    const visHeight = height - margin.right - margin.left
+    const visHeight = height - margin.top - margin.bottom
     
-    const xScale = d3.scaleBand()
+    const xScale = d3.scalePoint()
         .domain(chartData.map(d => d.x))
-        .range([0,visWidth])
-        .paddingInner(0.2)
+        .range([margin.left,visWidth])
 
     const yScale = d3.scaleLinear()
         .domain(d3.extent(chartData.map(d => d.y)))
-        .range([visHeight,0])
+        .range([visHeight + margin.bottom,margin.top])
 
     onMount(() => {
     
@@ -35,12 +34,21 @@
             .attr('transform',`translate(${margin.left},${margin.top}`)
 
         const xAxis = chart.append('g')
-            .attr('transform',`translate(${margin.left},${margin.top + visHeight})`)
+            .attr('transform',`translate(${0},${margin.top + visHeight})`)
             .call(d3.axisBottom(xScale))
 
         const yAxis = chart.append('g')
-            .attr('transform',`translate(${margin.left},0)`)
+            .attr('transform',`translate(${margin.left},${0})`)
             .call(d3.axisLeft(yScale))
+
+        chart.selectAll('circle')
+            .data(chartData)
+            .join('circle')
+            .attr('cx', d => xScale(d.x))
+            .attr('cy', d => yScale(d.y))
+            .attr('r',15)
+            .attr('fill','green')
+            .attr('opacity',0.7)
     })
     
     const dataX = chartData.map(d => xScale(d.x));
