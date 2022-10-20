@@ -17,4 +17,4 @@
 
 <CovidStat {...data.posts.stats}/>
 
-<CovidChart historicData={data.posts.historic} title="Covid 19 - {data.posts.state}" />
+<CovidChart/>
