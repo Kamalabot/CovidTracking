@@ -3,6 +3,7 @@
 	import CovidChart from '../../lib/CovidChart.svelte'
 	import CovidStat from '../../lib/CovidStat.svelte'
 	import TableContainer from '../../lib/TableContainer.svelte'
+	import LineChart from '../../lib/LineChart.svelte'
 	export let data;
 	//console.log(data)
 </script>
@@ -18,3 +19,5 @@
 <CovidStat {...data.country}/>
 
 <TableContainer data={data.state}/>
+
+<LineChart width={700} height={600} chartData={data.history}/>

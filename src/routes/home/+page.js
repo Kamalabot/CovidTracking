@@ -18,9 +18,18 @@ export const load = async({fetch}) =>{
         const parsedState = parsers.stateTable(stateData)
         return parsedState
     }
+	
+	const fetchUsHistory = async() =>{
+        const res = await fetch('https://api.covidtracking.com/v1/us/daily.json');
+        const usData = await res.json()
+        //console.log(stateData,'stateData')
+        const parsedUS = parsers.historicUS(usData)
+        return parsedUS
+    }
     
     return {
         country:fetchUSCurrent(),
-        state:fetchStateCurrent()
+        state:fetchStateCurrent(),
+		history:fetchUsHistory()
     }
 }

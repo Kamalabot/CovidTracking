@@ -21,11 +21,13 @@
     const visHeight = height - margin.top - margin.bottom
     
     const xScale = d3.scalePoint()
-        .domain(chartData.map(d => d.x))
+        .domain(chartData[0].data.map(d => d.x))
         .range([margin.left,visWidth])
-
-    const yScale = d3.scaleLinear()
-        .domain(d3.extent(chartData.map(d => d.y)))
+		
+	console.log(chartData[0].data.map((d,i) =>i))
+    
+	const yScale = d3.scaleLinear()
+        .domain(d3.extent(chartData[0].data.map(d => d.y)))
         .range([visHeight + margin.bottom,margin.top])
 
     onMount(() => {
@@ -35,13 +37,16 @@
         const canvas = docLocation.append('svg')
             .attr('width',width)
             .attr('height',height)
-
+		
         const chart = canvas.append('g')
-            .attr('transform',`translate(${margin.left},${margin.top}`)
+            .attr('transform',`translate(${margin.left},${margin.top})`)
 
-        const xAxis = chart.append('g')
+		const xAxis = d3.axisBottom(xScale).ticks(25)
+
+
+        chart.append('g')
             .attr('transform',`translate(${0},${margin.top + visHeight})`)
-            .call(d3.axisBottom(xScale))
+            .call(xAxis)
 
         const yAxis = chart.append('g')
             .attr('transform',`translate(${margin.left},${0})`)
@@ -49,7 +54,7 @@
 
     })
     
-    console.log(chartData)
+    //console.log(chartData,'Data Reached Line Chart')
 
 </script>
 
