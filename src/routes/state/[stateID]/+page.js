@@ -14,14 +14,14 @@ export const load = ({params, fetch }) =>{
 		const dataSt = await responseSt.json();
 		
 		//console.log(dataSt)
-		const responseHi = await fetch('https://api.covidtracking.com/v1/us/daily.json');
+		const responseHi = await fetch('https://api.covidtracking.com/v1/states/daily.json');
 		const dataHi = await responseHi.json()
 		
 		//console.log(dataSt, dataHi)
-  		const stats = parsers.stateStats(params.stateID,dataSt );
-		const historic = parsers.historicUS(dataHi);
+  		const stats = parsers.stateStats(params.stateID,dataSt);
+		const historic = parsers.historicState(params.stateID,dataHi);
 		
-      return { state: fullStateName, stats, historic };
+      return { state: fullStateName, stats: stats, historic:historic };
     }
 
     return {

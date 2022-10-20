@@ -1,8 +1,8 @@
 <script>
 // @ts-nocheck
-	import CovidChart from '$lib/CovidChart.svelte'
 	import CovidStat from '$lib/CovidStat.svelte'
 	import TableContainer from '$lib/TableContainer.svelte'
+	import LineChart from '$lib/LineChart.svelte'
 	export let data;
 	console.log(data)
 </script>
@@ -17,4 +17,4 @@
 
 <CovidStat {...data.posts.stats}/>
 
-<CovidChart/>
+<LineChart width={400} height={300} chartData={data.posts.historic}/>

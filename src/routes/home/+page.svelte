@@ -1,6 +1,5 @@
 <script>
 // @ts-nocheck
-	import CovidChart from '../../lib/CovidChart.svelte'
 	import CovidStat from '../../lib/CovidStat.svelte'
 	import TableContainer from '../../lib/TableContainer.svelte'
 	import LineChart from '../../lib/LineChart.svelte'

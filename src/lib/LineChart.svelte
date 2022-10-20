@@ -52,7 +52,7 @@
 			const title = canvas.append('g')
 				.attr('transform',`translate(${width/4},${margin.top + 20})`)
 				.append('text')
-				.text(`Status of Covid ${label} in US`)
+				.text(`Status of Covid ${label}`)
 				.attr('font-size','15')
 
 			const xAxis = d3.axisBottom(xScale);
