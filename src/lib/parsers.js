@@ -77,7 +77,7 @@ function parseHistoric(historicData) {
 function parseChart(historicData, key, label, color) {
   const chartData = historicData.map((data) => {
     return {
-      x: moment(data.date,'YYYYMMDD').format('YY/MM/DD'),
+      x: moment(data.date,'YYYYMMDD'),
       y: data[key] || 0,
     };
   });
