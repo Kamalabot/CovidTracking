@@ -18,6 +18,6 @@
 
 <CovidStat {...data.country}/>
 
-<TableContainer data={data.state}/>
+<LineChart width={400} height={300} chartData={data.history}/>
 
-<LineChart width={700} height={600} chartData={data.history}/>
+<TableContainer data={data.state}/>

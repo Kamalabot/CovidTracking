@@ -43,27 +43,27 @@ function parseHistoric(historicData) {
     {
       label: 'Cases',
       key: 'positive',
-      color: 'rgb(100, 0, 200)',
+      color: 'green',
     },
     {
       label: 'Recovered',
       key: 'recovered',
-      color: 'rgb(100, 100, 200)',
+      color: 'blue',
     },
     {
       label: 'Total Tested',
       key: 'totalTestResults',
-      color: 'rgb(10, 30, 100)',
+      color: 'red',
     },
     {
       label: 'Hospitalized',
       key: 'hospitalizedCurrently',
-      color: 'rgb(20, 100, 230)',
+      color: 'orange',
     },
     {
       label: 'Deaths',
       key: 'death',
-      color: 'rgb(255, 99, 132)',
+      color: 'black',
     },
   ].reduce((prev, next) => {
     if (historicData.filter((d) => d[next.key]).length > 4) {

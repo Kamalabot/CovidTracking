@@ -12,84 +12,81 @@
 
     export let height;
     export let width;
+	
     export let chartData; //get the historic data from page.js
 	let title;
-    // export let userId;
-    let div;
-    //console.log(chartData[0].data)
-    const margin = {left:70,right:20,top:20,bottom:50}
-    const visWidth = width - margin.left - margin.right
-    const visHeight = height - margin.top - margin.bottom
     
-    const xScale = d3.scaleTime()
-        .domain(d3.extent(chartData[0].data.map(d => d.x)))
-        .range([0,visWidth])
-	
-	//console.log(chartData[0].data.map((d,i) => d.x))
-    
-	const yScale = d3.scaleLinear()
-        .domain(d3.extent(chartData[0].data.map(d => d.y)))
-        .range([visHeight,margin.top])
+	let div;
 
-    onMount(() => {
-    
-        const docLocation = d3.select(div)
-        
-        const canvas = docLocation.append('svg')
-            .attr('width',width)
-            .attr('height',height)
-		
-        const chart = canvas.append('g')
-            .attr('transform',`translate(${margin.left},${margin.top})`)
+	buildChart(chartData[0].data, chartData[0].borderColor,chartData[0].label)
+	buildChart(chartData[1].data, chartData[1].borderColor,chartData[1].label)
+	buildChart(chartData[2].data, chartData[2].borderColor,chartData[2].label)
+	buildChart(chartData[3].data, chartData[3].borderColor,chartData[3].label)
 	
-		const title = canvas.append('g')
-			.attr('transform',`translate(${width/2 - 50},${margin.top + 20})`)
-			.append('text')
-			.text('Covid Status Time Series')
-			.attr('font-size','30')
-	
-		const xAxis = d3.axisBottom(xScale);
+	function buildChart(data, colorData, label){
+		const margin = {left:70,right:20,top:20,bottom:50}
+		const visWidth = width - margin.left - margin.right
+		const visHeight = height - margin.top - margin.bottom
 
-		
-        const xAx = canvas.append('g')
-            .attr('transform',`translate(${margin.left},${visHeight+margin.top})`)
-            .call(xAxis)
-			.selectAll("text")  
-			.style("text-anchor", "end")
-			.attr("dx", "-.1em")
-			.attr("dy", ".05em")
-			.attr("transform", "rotate(-25)")
+		const xScale = d3.scaleTime()
+			.domain(d3.extent(data.map(d => d.x)))
+			.range([0,visWidth])
 
-		const yAxis = canvas.append('g')
-            .attr('transform',`translate(${margin.left},${margin.top})`)
-            .call(d3.axisLeft(yScale))
-			.selectAll("text")  
-			.style("text-anchor", "end")
-			.attr("dx", "-.1em")
-			.attr("dy", ".05em")
-			.attr("transform", "rotate(-25)")
-	
-		const bubbles = chart.selectAll('g')
-	        .data(chartData[0].data)
-    	    .join('g');
-	
-		const bars = bubbles
-			.append('circle')
-			.attr('cy', d => yScale(d.y))
-			.attr('cx', d => xScale(d.x))
-			.attr('r', 5)
-			.attr('fill', chartData[0].borderColor);
-		
-		const valuesRef = bubbles
-			.append('text')
-			.attr('x', d => xScale(d.x))
-			.attr('y', d => yScale(d.y))
-			.text(d => d.y)
-			.attr('fill', chartData[0].borderColor)
-			.attr('font-size', '15')
-			.attr('visibility','hidden')
-			.attr('id','tool');
-    })
+		//console.log(data.map((d,i) => d.x))
+
+		const yScale = d3.scaleLinear()
+			.domain(d3.extent(data.map(d => d.y)))
+			.range([visHeight,margin.top])
+
+		onMount(() => {
+
+			const docLocation = d3.select(div)
+
+			const canvas = docLocation.append('svg')
+				.attr('width',width)
+				.attr('height',height)
+
+			const chart = canvas.append('g')
+				.attr('transform',`translate(${margin.left},${margin.top})`)
+
+			const title = canvas.append('g')
+				.attr('transform',`translate(${width/4},${margin.top + 20})`)
+				.append('text')
+				.text(`Status of Covid ${label} in US`)
+				.attr('font-size','15')
+
+			const xAxis = d3.axisBottom(xScale);
+
+			const xAx = canvas.append('g')
+				.attr('transform',`translate(${margin.left},${visHeight+margin.top})`)
+				.call(xAxis)
+				.selectAll("text")  
+				.style("text-anchor", "end")
+				.attr("dx", "-.1em")
+				.attr("dy", ".05em")
+				.attr("transform", "rotate(-25)")
+
+			const yAxis = canvas.append('g')
+				.attr('transform',`translate(${margin.left},${margin.top})`)
+				.call(d3.axisLeft(yScale))
+				.selectAll("text")  
+				.style("text-anchor", "end")
+				.attr("dx", "-.1em")
+				.attr("dy", ".05em")
+				.attr("transform", "rotate(-25)")
+
+			const bubbles = chart.selectAll('g')
+				.data(data)
+				.join('g');
+
+			const bars = bubbles
+				.append('circle')
+				.attr('cy', d => yScale(d.y))
+				.attr('cx', d => xScale(d.x))
+				.attr('r', 2)
+				.attr('fill',colorData)
+		})
+	}
 	
 	function axesDomain(axis, axisObject, label, visWidth, visHeight){
 		if (axis == 'x' || axis == 'X'){
